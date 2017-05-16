@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOError;
@@ -20,6 +22,8 @@ import java.util.UUID;
 public class MainActivity extends AppCompatActivity {
 
     Button btnConect, btnLed1, btnLed2, btnLed3;
+    SeekBar slider;
+    TextView textoSlider;
     private static final int SOLICITA_ACTIVACION = 1;
     private static final int SOLICITA_CONEXION = 2;
 
@@ -44,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
         btnLed1 = (Button)findViewById(R.id.btnLed1);
         btnLed2 = (Button)findViewById(R.id.btnLed2);
         btnLed3 = (Button)findViewById(R.id.btnLed3);
+        slider = (SeekBar)findViewById(R.id.intencidad1);
+        textoSlider = (TextView)findViewById(R.id.textView);
 
         adapter = BluetoothAdapter.getDefaultAdapter();
         if(adapter == null){
@@ -106,6 +112,24 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Bluetooth no conectado", Toast.LENGTH_LONG).show();
                 }
             }
+        });
+        ///////////////////////////////////////////////////////////
+        slider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                if(conexion){
+                    textoSlider.setText("Intencidad: " + progress);
+                    conecterThread.enviar((String)progress);
+                }else{
+                    Toast.makeText(getApplicationContext(), "Bluetooth no conectado", Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {}
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {}
         });
     }
 
