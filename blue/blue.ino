@@ -26,12 +26,14 @@ void loop() {
       comando += caracter;
       delay(10);
     }
-    if(comando.indexOf("led1") >= 0){
+    if(comando.indexOf("ON") >= 0){
       analogWrite(led1,255);
+      analogWrite(led2,255);
     }
   
-    if(comando.indexOf("led2") >= 0){
-      analogWrite(led2,255);
+    if(comando.indexOf("Off") >= 0){
+      analogWrite(led1,0);
+      analogWrite(led2,0);
     }
     if(comando.toInt()> 0 && comando.toInt() < 255){
       analogWrite(led1,comando.toInt());

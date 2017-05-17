@@ -28,4 +28,9 @@
         android:layout_height="wrap_content"
         android:max = "255"
         android:id="@+id/intencidad1" />
+    <Button
+        android:text="Apagar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnOff" />
 </LinearLayout>

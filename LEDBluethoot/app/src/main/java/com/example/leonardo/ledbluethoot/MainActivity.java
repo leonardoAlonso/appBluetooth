@@ -21,7 +21,7 @@ import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnConect, btnLed1, btnLed2;
+    Button btnConect, btnLed1, btnOff;
     SeekBar slider;
     TextView textoSlider;
     private static final int SOLICITA_ACTIVACION = 1;
@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnConect = (Button)findViewById(R.id.Conect);
         btnLed1 = (Button)findViewById(R.id.btnLed1);
+        btnOff = (Button)findViewById(R.id.btnOff);
         slider = (SeekBar)findViewById(R.id.intencidad1);
         textoSlider = (TextView)findViewById(R.id.textView);
 
@@ -82,8 +83,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(conexion){
-                    conecterThread.enviar("led1");
-                    conecterThread.enviar("led2");
+                    conecterThread.enviar("ON");
+                }else{
+                    Toast.makeText(getApplicationContext(), "Bluetooth no conectado", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        ///////////////////////////////////////////////////////////
+        btnOff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(conexion){
+                    conecterThread.enviar("Off");
+                    conecterThread.enviar("Off");
                 }else{
                     Toast.makeText(getApplicationContext(), "Bluetooth no conectado", Toast.LENGTH_LONG).show();
                 }
