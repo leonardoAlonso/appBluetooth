@@ -21,7 +21,7 @@ import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnConect, btnLed1, btnLed2, btnLed3;
+    Button btnConect, btnLed1, btnLed2;
     SeekBar slider;
     TextView textoSlider;
     private static final int SOLICITA_ACTIVACION = 1;
@@ -46,8 +46,6 @@ public class MainActivity extends AppCompatActivity {
 
         btnConect = (Button)findViewById(R.id.Conect);
         btnLed1 = (Button)findViewById(R.id.btnLed1);
-        btnLed2 = (Button)findViewById(R.id.btnLed2);
-        btnLed3 = (Button)findViewById(R.id.btnLed3);
         slider = (SeekBar)findViewById(R.id.intencidad1);
         textoSlider = (TextView)findViewById(R.id.textView);
 
@@ -85,29 +83,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(conexion){
                     conecterThread.enviar("led1");
-                }else{
-                    Toast.makeText(getApplicationContext(), "Bluetooth no conectado", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
-
-        /////////////////////////////////////////////////////////////
-        btnLed2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(conexion){
                     conecterThread.enviar("led2");
-                }else{
-                    Toast.makeText(getApplicationContext(), "Bluetooth no conectado", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
-        ////////////////////////////////////////////////////////////
-        btnLed3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(conexion){
-                    conecterThread.enviar("led3");
                 }else{
                     Toast.makeText(getApplicationContext(), "Bluetooth no conectado", Toast.LENGTH_LONG).show();
                 }
@@ -119,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 if(conexion){
                     textoSlider.setText("Intencidad: " + progress);
-                    conecterThread.enviar((String)progress);
+                    conecterThread.enviar(String.valueOf(progress));
                 }else{
                     Toast.makeText(getApplicationContext(), "Bluetooth no conectado", Toast.LENGTH_LONG).show();
                 }

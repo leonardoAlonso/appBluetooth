@@ -13,23 +13,10 @@
         android:id="@+id/Conect" />
 
     <Button
-        android:text="Led1"
+        android:text="Motores"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btnLed1" />
-
-    <Button
-        android:text="Led2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnLed2" />
-
-    <Button
-        android:text="Led3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnLed3" />
-
     <TextView
         android:text="Intencidad: "
         android:layout_width="match_parent"
@@ -39,5 +26,6 @@
     <SeekBar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:max = "255"
         android:id="@+id/intencidad1" />
 </LinearLayout>
