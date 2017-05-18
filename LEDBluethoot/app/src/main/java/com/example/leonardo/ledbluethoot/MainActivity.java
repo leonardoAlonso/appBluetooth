@@ -21,7 +21,7 @@ import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnConect, btnLed1, btnOff;
+    Button btnConect, btnA, btnI, btnD, btnDown, btnOff;
     SeekBar slider;
     TextView textoSlider;
     private static final int SOLICITA_ACTIVACION = 1;
@@ -45,7 +45,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         btnConect = (Button)findViewById(R.id.Conect);
-        btnLed1 = (Button)findViewById(R.id.btnLed1);
+        btnA = (Button)findViewById(R.id.btnA);
+        btnI = (Button)findViewById(R.id.btnI);
+        btnD = (Button)findViewById(R.id.btnD);
+        btnDown = (Button)findViewById(R.id.btnDown);
+
         btnOff = (Button)findViewById(R.id.btnOff);
         slider = (SeekBar)findViewById(R.id.intencidad1);
         textoSlider = (TextView)findViewById(R.id.textView);
@@ -79,17 +83,50 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnLed1.setOnClickListener(new View.OnClickListener() {
+        btnA.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(conexion){
-                    conecterThread.enviar("ON");
+                    conecterThread.enviar("Arriba");
                 }else{
                     Toast.makeText(getApplicationContext(), "Bluetooth no conectado", Toast.LENGTH_LONG).show();
                 }
             }
         });
         ///////////////////////////////////////////////////////////
+        btnI.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(conexion){
+                    conecterThread.enviar("Izquierda");
+                }else{
+                    Toast.makeText(getApplicationContext(), "Bluetooth no conectado", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        ///////////////////////////////////////////////////////////
+        btnD.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(conexion){
+                    conecterThread.enviar("Derecha");
+                }else{
+                    Toast.makeText(getApplicationContext(), "Bluetooth no conectado", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        ///////////////////////////////////////////////////////////
+        btnDown.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(conexion){
+                    conecterThread.enviar("Down");
+                }else{
+                    Toast.makeText(getApplicationContext(), "Bluetooth no conectado", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        //////////////////////////////////////////////////////////
         btnOff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

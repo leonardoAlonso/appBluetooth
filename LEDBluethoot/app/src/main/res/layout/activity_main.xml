@@ -13,10 +13,25 @@
         android:id="@+id/Conect" />
 
     <Button
-        android:text="Motores"
+        android:text="Arriba"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnLed1" />
+        android:id="@+id/btnA" />
+    <Button
+        android:text="Izquierda"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnI" />
+    <Button
+        android:text="Derecha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnD" />
+    <Button
+        android:text="Abajo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnDown" />
     <TextView
         android:text="Intencidad: "
         android:layout_width="match_parent"
