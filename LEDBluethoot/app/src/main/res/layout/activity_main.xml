@@ -59,7 +59,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:text="<"
+            android:text="l"
             android:textSize="40dp"
             android:background="#000"
             android:textColor="#fff"
