@@ -77,7 +77,7 @@ void loop() {
     else if(comando == "Off"){
       motores(0,0);
     }
-    else if(comando == "Abajo") {
+    else if(comando == "Down") {
       motores(-250,-250);
     }
     else if(comando == "Derecha"){

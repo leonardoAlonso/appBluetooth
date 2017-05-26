@@ -9,11 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.SeekBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.IOError;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -22,8 +19,7 @@ import java.util.UUID;
 public class MainActivity extends AppCompatActivity {
 
     Button btnConect, btnA, btnI, btnD, btnDown, btnOff;
-    SeekBar slider;
-    TextView textoSlider;
+
     private static final int SOLICITA_ACTIVACION = 1;
     private static final int SOLICITA_CONEXION = 2;
 
@@ -51,8 +47,6 @@ public class MainActivity extends AppCompatActivity {
         btnDown = (Button)findViewById(R.id.btnDown);
 
         btnOff = (Button)findViewById(R.id.btnOff);
-        slider = (SeekBar)findViewById(R.id.intencidad1);
-        textoSlider = (TextView)findViewById(R.id.textView);
 
         adapter = BluetoothAdapter.getDefaultAdapter();
         if(adapter == null){
@@ -132,30 +126,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(conexion){
                     conecterThread.enviar("Off");
-                    conecterThread.enviar("Off");
                 }else{
                     Toast.makeText(getApplicationContext(), "Bluetooth no conectado", Toast.LENGTH_LONG).show();
                 }
             }
         });
         ///////////////////////////////////////////////////////////
-        slider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                if(conexion){
-                    textoSlider.setText("Intencidad: " + progress);
-                    conecterThread.enviar(String.valueOf(progress));
-                }else{
-                    Toast.makeText(getApplicationContext(), "Bluetooth no conectado", Toast.LENGTH_LONG).show();
-                }
-            }
 
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {}
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {}
-        });
     }
 
     @Override
